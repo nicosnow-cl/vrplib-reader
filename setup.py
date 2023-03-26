@@ -1,16 +1,22 @@
 from pathlib import Path
-from setuptools import setup
+from typing import Final
+from setuptools import setup, find_packages
 
-this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text()
+SOURCE_DIRECTORY: Final = 'src'
+PACKAGE_NAME: Final = 'vrplib_reader'
+VERSION: Final = '0.0.1'
+THIS_DIRECTORY: Final = Path(__file__).parent
+LONG_DESCRIPTION: Final = (THIS_DIRECTORY / "README.md").read_text()
+PACKAGES: Final = find_packages(where=SOURCE_DIRECTORY)
 
 setup(
-    name='vrplib_reader',
-    version="0.0.1",
+    name=PACKAGE_NAME,
+    version=VERSION,
     url='https://github.com/nicosnow-cl/vrplib-reader',
     author='Nicolás Frías',
     author_email='nicolas.friasrojas@gmail.com',
-    packages=['src'],
-    long_description=long_description,
+    package_dir={'': SOURCE_DIRECTORY},
+    packages=PACKAGES,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown'
 )
