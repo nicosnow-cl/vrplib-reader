@@ -7,7 +7,13 @@ PACKAGE_NAME: Final = 'vrplib_reader'
 VERSION: Final = '0.0.2'
 THIS_DIRECTORY: Final = Path(__file__).parent
 LONG_DESCRIPTION: Final = (THIS_DIRECTORY / "README.md").read_text()
-PACKAGES: Final = find_packages(where=SOURCE_DIRECTORY)
+PACKAGES: Final = find_packages(where=SOURCE_DIRECTORY,
+                                exclude=[
+                                    'interfaces',
+                                    'readers'
+                                    f'{PACKAGE_NAME}.interfaces',
+                                    f'{PACKAGE_NAME}.readers']
+                                )
 
 setup(
     name=PACKAGE_NAME,
